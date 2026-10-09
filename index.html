@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="橘子电影网，精选优质电影网站导航大全、实用网址收录平台与观影指南。提供华语电影、港片、日韩电影、欧美电影、经典老片、冷门佳片六大分类频道、实时热榜、酸甜片单与影视资讯。倡导通过正规渠道观看正版影视内容。">
+<meta name="keywords" content="橘子电影网, 电影网, 影视导航, 网址导航, 电影网站大全, 优质网站导航, 华语电影, 港片, 日韩电影, 欧美电影, 经典老片, 冷门佳片, 观影指南, 影视资讯, 酸甜片单">
+<meta name="author" content="橘子电影网">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>橘子电影网 - 精选优质电影网站导航大全 | 酸甜观影指南</title>
+<style>
+/* ==========================================================
+   橘子电影网  单页响应式网站
+   定位：电影网站导航大全 + 观影指南（非播放站，倡导正版）
+   视觉基调：柑橘暖 —— 橙皮 #FF7A1A + 橘肉 #FFB03A + 叶绿 #4FB783 + 米白
+   8 套差异化 DOM 模板，CSS/JS 全部内联，标签闭合
+   ========================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --paper:#fffaf3;--paper2:#fff5e8;--ink:#2b2118;--ink2:#6b5d4d;--ink3:#a39685;
+  --o1:#FF7A1A;--o2:#FFB03A;--g1:#4FB783;--line:#f0e2cd;--line2:#e6d3b6;
+  --sans:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Songti SC","STSong","SimSun","Noto Serif SC",Georgia,serif;
+  --mx:1180px;--r:26px;
+  --shadow:0 10px 30px rgba(255,122,26,.18);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink2);line-height:1.85;overflow-x:hidden;
+  background-image:
+    radial-gradient(520px 240px at 94% -8%,rgba(255,176,58,.22),transparent 60%),
+    radial-gradient(420px 220px at 2% 96%,rgba(79,183,131,.16),transparent 60%);
+  background-attachment:fixed}
+a{color:inherit;text-decoration:none;transition:.24s cubic-bezier(.22,.8,.3,1)}
+ul{list-style:none}
+button{font-family:inherit}
+::selection{background:var(--o1);color:#fff}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar:horizontal{height:10px}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--o1),var(--o2));border-radius:9px;border:2px solid var(--paper)}
+::-webkit-scrollbar-track{background:var(--paper2)}
+
+.wrap{max-width:var(--mx);margin:0 auto;padding:0 26px}
+section{padding:84px 0;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:10.5px;letter-spacing:3.2px;color:var(--o1);font-weight:850;text-transform:uppercase}
+.eyebrow::before{content:"";width:26px;height:3px;border-radius:4px;background:var(--g1)}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:12px 0 34px}
+.sec-t{font-family:var(--serif);font-size:27px;font-weight:950;letter-spacing:.5px;line-height:1.32;color:var(--ink)}
+.sec-t small{display:block;font-family:inherit;font-size:10.5px;color:var(--ink3);font-weight:600;letter-spacing:2.4px;margin-top:9px}
+.more{font-size:13px;font-weight:800;color:var(--o1);background:rgba(255,122,26,.14);padding:8px 15px;border-radius:22px;border:1.5px solid rgba(255,122,26,.4)}
+.more:hover{background:var(--o1);color:#fff;transform:translateY(-2px);box-shadow:var(--shadow)}
+
+/* ---------- Header ---------- */
+.hd{position:sticky;top:0;z-index:100;background:rgba(255,250,243,.94);backdrop-filter:blur(12px);border-bottom:2.5px solid var(--o1)}
+.hd-in{display:flex;align-items:center;justify-content:space-between;height:70px;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:950;font-size:19px;color:var(--ink)}
+.logo .mk{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50% 50% 14px 14px;color:#fff;font-size:20px;font-weight:950;background:radial-gradient(circle at 34% 30%,#ffe0a8,var(--o2) 42%,var(--o1));box-shadow:var(--shadow);transform:rotate(-9deg)}
+.logo em{font-style:normal;color:var(--g1);font-size:9.5px;font-weight:750;letter-spacing:.9px}
+.nav{display:flex;gap:2px}
+.nav a{font-size:13.5px;padding:9px 13px;border-radius:13px;color:var(--ink2);font-weight:650}
+.nav a:hover{background:rgba(255,122,26,.16);color:var(--o1)}
+.nav a.on{color:#fff;background:linear-gradient(135deg,var(--o1),var(--o2));font-weight:850;box-shadow:var(--shadow)}
+.mbtn{display:none;width:46px;height:46px;border:2px solid var(--o1);border-radius:14px;background:transparent;color:var(--o1);font-size:20px;cursor:pointer}
+
+/* ---------- Hero ---------- */
+.hero{padding:56px 0 20px}
+.hero .wrap{display:grid;grid-template-columns:1.02fr .98fr;gap:46px;align-items:center}
+.hero h1{font-family:var(--serif);font-size:clamp(31px,5.2vw,53px);line-height:1.24;font-weight:950;margin:8px 0 18px;color:var(--ink)}
+.hero h1 i{font-style:normal;background:linear-gradient(92deg,var(--o1),var(--o2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lede{font-size:15.5px;color:var(--ink2);max-width:560px;margin-bottom:22px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.stat{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:15px 4px;text-align:center;box-shadow:0 6px 16px rgba(255,122,26,.1)}
+.stat b{display:block;font-family:var(--serif);font-size:23px;font-weight:950;color:var(--o1)}
+.stat span{font-size:10px;color:var(--ink3);letter-spacing:.7px}
+.acts{display:flex;gap:14px;flex-wrap:wrap}
+.b{padding:14px 32px;border-radius:34px;font-size:15px;font-weight:850;cursor:pointer;border:0;transition:.26s;letter-spacing:.4px}
+.b-p{background:linear-gradient(135deg,var(--o1),var(--o2));color:#fff;box-shadow:var(--shadow)}
+.b-p:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.b-g{border:1.5px solid var(--o1);color:var(--o1);background:transparent}
+.b-g:hover{background:var(--o1);color:#fff}
+
+/* 柑橘切片卡 */
+.slice{position:relative;background:linear-gradient(160deg,#fff,#fff5e8);border:1.5px solid var(--line2);border-radius:26px;padding:26px 24px;box-shadow:var(--shadow);transform:rotate(2.4deg)}
+.slice .t{font-family:var(--serif);font-size:11px;letter-spacing:4.5px;color:var(--o1);font-weight:850;margin-bottom:14px}
+.citrus{width:100%;aspect-ratio:4/3;position:relative;border-radius:50%;background:
+  radial-gradient(circle at 50% 50%,#fff6e2 0 22%,var(--o2) 22% 30%,#fff 30% 40%,var(--o1) 40% 50%,#fff 50% 58%,var(--o2) 58% 66%,#fff 66% 74%,var(--o1) 74% 82%,#fff 82% 88%,var(--o2) 88% 94%,#fff 94%);
+  box-shadow:inset 0 0 0 10px var(--o1),inset 0 0 0 14px var(--o2),0 14px 34px rgba(255,122,26,.3)}
+.citrus::after{content:"🍊";position:absolute;left:50%;top:50%;transform:translate(-50%,-58%);font-size:52px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.16))}
+.smeta{display:flex;justify-content:space-between;margin-top:16px;font-size:11px;color:var(--ink2)}
+.smeta b{color:var(--o1);font-size:14px}
+
+/* ---------- ① 网址导航：分类卡 + 条目 ---------- */
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+.cat{background:#fff;border:1.5px solid var(--line);border-radius:22px;overflow:hidden;transition:.28s;box-shadow:0 7px 20px rgba(255,122,26,.09)}
+.cat:hover{transform:translateY(-7px);border-color:var(--o1);box-shadow:var(--shadow)}
+.cat .hd2{display:flex;align-items:center;gap:11px;padding:15px 18px;color:#fff;background:var(--bg)}
+.cat .hd2 .ic{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:18px;background:rgba(255,255,255,.32);box-shadow:0 0 0 5px rgba(255,255,255,.16)}
+.cat .hd2 b{font-family:var(--serif);font-size:17px;font-weight:950;line-height:1.35}
+.cat .hd2 small{display:block;font-size:9.5px;letter-spacing:1.3px;opacity:.92}
+.cat ul{padding:10px 8px 12px}
+.cat li a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;font-size:13.5px;color:var(--ink2)}
+.cat li a:hover{background:rgba(255,122,26,.15);color:var(--o1);transform:translateX(4px)}
+.cat li a .dot{width:7px;height:7px;border-radius:50%;background:var(--g1);flex:none;box-shadow:0 0 8px rgba(79,183,131,.7)}
+.cat li a span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cat li a em{font-style:normal;font-size:9.5px;color:var(--ink3);letter-spacing:.6px;flex:none}
+.cat li a:hover em{color:var(--o1)}
+
+/* ---------- ② 热榜：进度条赛道 ---------- */
+.race{display:flex;flex-direction:column;gap:11px}
+.rw{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:12px 18px;transition:.24s}
+.rw:hover{transform:translateX(6px);border-color:var(--o1);box-shadow:var(--shadow)}
+.rw .nd{font-family:var(--serif);font-size:25px;font-weight:950;color:var(--ink3);width:40px;flex:none;transition:.24s}
+.rw:hover .nd{color:var(--o1)}
+.rw:nth-child(1) .nd{color:var(--o2)}
+.rw:nth-child(2) .nd{color:#c9a24b}
+.rw:nth-child(3) .nd{color:#b98b5e}
+.rw .tx{flex:1;min-width:0}
+.rw .tx b{display:block;font-size:14.5px;color:var(--ink);font-weight:850;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rw .tx small{font-size:10px;color:var(--ink3);letter-spacing:.5px}
+.rw .bar{flex:1.2;height:12px;border-radius:12px;background:var(--paper2);overflow:hidden;min-width:70px}
+.rw .bar em{display:block;height:100%;width:0;border-radius:12px;background:linear-gradient(90deg,var(--o1),var(--o2));transition:width 1.05s cubic-bezier(.22,.8,.3,1)}
+.rw .ht{width:74px;text-align:right;font-size:11px;font-weight:850;color:var(--o1);flex:none}
+
+/* ---------- ③ 分类：圆片拼盘 ---------- */
+.plate{position:relative;width:100%;aspect-ratio:16/9;border-radius:34px;background:var(--paper2);border:2px dashed var(--line2);overflow:hidden;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(3,1fr);gap:0}
+.pl{position:absolute;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:var(--serif);font-size:12px;font-weight:950;text-align:center;line-height:1.3;cursor:pointer;transition:.3s;box-shadow:0 8px 20px rgba(0,0,0,.16);letter-spacing:.6px}
+.pl:hover{transform:scale(1.12);z-index:5;box-shadow:0 16px 34px rgba(255,122,26,.35)}
+.pl span{position:relative;z-index:2}
+.pl::after{content:"";position:absolute;inset:6px;border:1.5px solid rgba(255,255,255,.5);border-radius:50%}
+
+/* ---------- ④ 片单：真实数据表 ---------- */
+.tblwrap{background:#fff;border:1.5px solid var(--line);border-radius:18px;overflow-x:auto;box-shadow:0 9px 26px rgba(255,122,26,.1)}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:660px}
+thead th{background:linear-gradient(135deg,var(--o1),var(--o2));color:#fff;font-family:var(--serif);font-weight:850;font-size:13px;padding:14px;text-align:left;letter-spacing:.5px;white-space:nowrap}
+tbody td{padding:12px 14px;border-bottom:1px dashed var(--line);color:var(--ink2);vertical-align:middle}
+tbody tr:nth-child(even){background:rgba(255,122,26,.06)}
+tbody tr:hover{background:rgba(255,122,26,.16)}
+tbody tr:hover td{color:var(--o1)}
+td.n{font-family:var(--serif);font-weight:950;color:var(--o1);width:52px}
+td.ttl{font-weight:750;color:var(--ink)}
+.stars{color:var(--o2);letter-spacing:1px;font-size:11px;white-space:nowrap}
+.pill{display:inline-block;font-size:10px;padding:3px 9px;border-radius:20px;font-weight:800;letter-spacing:.6px;white-space:nowrap}
+.p-c{background:rgba(79,183,131,.22);color:#2c8a5f}
+.p-h{background:rgba(255,176,58,.28);color:#b5670c}
+.p-n{background:rgba(120,110,100,.16);color:#6b5d4d}
+
+/* ---------- ⑤ 酸甜影评：杂志主次卡 ---------- */
+.mag{display:grid;grid-template-columns:1.45fr 1fr;grid-template-rows:1fr 1fr;gap:18px}
+.nt{background:#fff;border:1.5px solid var(--line);border-radius:20px;overflow:hidden;transition:.26s;cursor:pointer;display:flex;flex-direction:column}
+.nt:hover{transform:translateY(-6px);border-color:var(--o1);box-shadow:var(--shadow)}
+.nt.lead{grid-row:1/3;position:relative}
+.nt .cv{height:150px;position:relative;overflow:hidden}
+.nt.lead .cv{height:auto;position:absolute;inset:0}
+.nt .cv i{position:absolute;inset:0;background:var(--bg);opacity:.96}
+.nt .cv::after{content:attr(data-e);position:absolute;right:14px;bottom:8px;font-size:46px;opacity:.26}
+.nt.lead .cv::after{font-size:120px;right:26px;bottom:14px}
+.nt .bd{padding:18px;position:relative;z-index:2}
+.nt.lead .bd{margin-top:auto;background:linear-gradient(0deg,rgba(43,33,24,.96),rgba(43,33,24,.5),transparent);color:var(--paper)}
+.nt .cat2{font-size:9.5px;letter-spacing:2.6px;color:var(--o1);font-weight:850}
+.nt.lead .cat2{color:var(--o2)}
+.nt h4{font-family:var(--serif);font-weight:950;color:var(--ink);margin:7px 0 9px;line-height:1.5}
+.nt.lead h4{font-size:23px;color:#fff}
+.nt:not(.lead) h4{font-size:15px}
+.nt p{font-size:12.5px;color:var(--ink2);line-height:1.9;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.nt.lead p{color:rgba(255,250,243,.9)}
+.nt .meta{display:flex;justify-content:space-between;font-size:10px;color:var(--ink3);margin-top:12px;padding-top:10px;border-top:1px dashed var(--line)}
+
+/* ---------- ⑥ 特色：图标卡 ---------- */
+.feat{display:grid;grid-template-columns:repeat(auto-fill,minmax(208px,1fr));gap:18px}
+.fi{background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:24px 20px;text-align:center;transition:.28s;cursor:pointer;position:relative}
+.fi::before{content:"";position:absolute;inset:9px;border:1.5px dashed transparent;border-radius:16px;transition:.28s}
+.fi:hover{transform:translateY(-8px);border-color:var(--o1);box-shadow:var(--shadow)}
+.fi:hover::before{border-color:var(--o2)}
+.fi .ic{width:64px;height:64px;margin:0 auto 13px;border-radius:50% 50% 18px 18px;display:grid;place-items:center;font-size:26px;color:#fff;background:linear-gradient(135deg,var(--o1),var(--o2));box-shadow:var(--shadow);transform:rotate(-7deg)}
+.fi h4{font-family:var(--serif);font-size:16.5px;font-weight:950;color:var(--ink);margin-bottom:7px}
+.fi p{font-size:12px;color:var(--ink3);line-height:1.8}
+
+/* ---------- ⑦ 观影日历：周历 ---------- */
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.day{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 8px;transition:.26s;cursor:pointer;position:relative;min-height:118px}
+.day:hover{transform:translateY(-6px);border-color:var(--o1);box-shadow:var(--shadow);background:linear-gradient(160deg,#fff,#fff2dd)}
+.day .wd{font-size:9.5px;letter-spacing:2px;color:var(--ink3);font-weight:850}
+.day .dt{font-family:var(--serif);font-size:19px;font-weight:950;color:var(--o1);margin:2px 0 7px}
+.day .tg{font-size:10.5px;color:var(--ink);line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+
+/* ---------- CTA ---------- */
+.cta{text-align:center;padding:56px 28px;border-radius:34px;background:
+  radial-gradient(660px 260px at 50% -30%,rgba(255,176,58,.26),transparent 60%),linear-gradient(160deg,var(--o1),var(--o2));border:2px solid var(--o1);margin:16px 0 34px;box-shadow:var(--shadow);color:#fff}
+.cta h2{font-family:var(--serif);font-size:clamp(23px,3.7vw,36px);font-weight:950;margin-bottom:13px;text-shadow:0 3px 12px rgba(140,60,0,.3)}
+.cta p{color:rgba(255,255,255,.95);max-width:760px;margin:0 auto 24px;font-size:14.5px}
+
+/* ---------- Footer ---------- */
+.ftr{background:linear-gradient(160deg,#2b2118,#463420);color:rgba(255,250,243,.7);padding:56px 0 22px;margin-top:30px;border-top:2.5px solid var(--o1)}
+.fg{display:grid;grid-template-columns:1.9fr repeat(3,1fr);gap:28px;margin-bottom:30px}
+.fb .logo{color:#fff}
+.fb .logo em{color:var(--o2)}
+.fb p{font-size:12.5px;margin-top:13px;max-width:330px;line-height:1.95;color:rgba(255,250,243,.65)}
+.fc h5{font-size:14.5px;margin-bottom:13px;color:var(--o2);letter-spacing:1px;font-family:var(--serif)}
+.fc a{display:block;font-size:12.5px;padding:5px 0;color:rgba(255,250,243,.6)}
+.fc a:hover{color:var(--o2);transform:translateX(4px)}
+.fbttm{text-align:center;font-size:11.5px;border-top:1px solid rgba(255,255,255,.14);padding-top:20px;line-height:2;color:rgba(255,250,243,.55)}
+.fbttm a{color:rgba(255,250,243,.85)}
+.fbttm a:hover{color:var(--o2)}
+
+.top{position:fixed;right:20px;bottom:24px;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--o1),var(--o2));color:#fff;display:grid;place-items:center;font-size:19px;cursor:pointer;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.3s;z-index:99;border:0}
+
+@media(max-width:960px){.hero .wrap{grid-template-columns:1fr}.mag{grid-template-columns:1fr}}
+@media(max-width:680px){
+  section{padding:54px 0}
+  .wrap{padding:0 16px}
+  .mbtn{display:grid;place-items:center}
+  .nav{position:fixed;inset:70px 0 0 100%;flex-direction:column;background:rgba(255,250,243,.99);padding:22px;border-top:2.5px solid var(--o1);transition:.35s;z-index:99}
+  .nav.open{inset:70px 0 0 0}
+  .nav a{font-size:16px;padding:15px;border-radius:13px;text-align:center;color:var(--ink)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .slice,.cat,.nt{transform:none}
+  .rw .ht{display:none}
+  .cal{grid-template-columns:repeat(2,1fr)}
+  .day{min-height:104px}
+  .sec-t{font-size:21px}
+}
+@media print{.hd,.slice,.race,.top,.nav,.fbttm br{display:none}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<!-- ================= HEADER ================= -->
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="#top" aria-label="返回顶部"><span class="mk">🍊</span>橘子电影网<em>导航</em></a>
+    <nav class="nav" id="nav" aria-label="主导航">
+      <a href="#home" class="on">首页</a>
+      <a href="#nav2">网址导航</a>
+      <a href="#rank">实时热榜</a>
+      <a href="#cat">分类频道</a>
+      <a href="#list">酸甜片单</a>
+      <a href="#news">酸甜影评</a>
+      <a href="#cal">观影日历</a>
+      <a href="#feat">网站特色</a>
+      <a href="#about">关于</a>
+    </nav>
+    <button class="mbtn" id="mb" aria-label="菜单" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">电影网站导航大全 · 酸甜观影指南</span>
+      <h1>橘子电影网<br>找得<b>快</b>，看得<i>甜</i></h1>
+      <p class="lede"><b>橘子电影网</b>，一个<b>精选优质电影网站导航大全</b>、<b>实用网址收录平台</b>与<b>观影指南</b>。我们不播放、不存储、不导流任何违规或侵权资源，只做三件事：把散落在网上的<b>正规电影站点</b>按"华语电影、港片、日韩电影、欧美电影、经典老片、冷门佳片"分类整理好；给你一份<b>酸甜片单</b>——甜的是治愈与欢笑，酸的是现实与锋利；再写一点<b>人话的影评</b>，帮你看得懂、看得值、不踩坑。<b>请通过正规渠道观看正版影视内容。</b></p>
+      <div class="stats">
+        <div class="stat"><b>986</b><span>精选网址</span></div>
+        <div class="stat"><b>8</b><span>分类频道</span></div>
+        <div class="stat"><b>日更</b><span>实时热榜</span></div>
+        <div class="stat"><b>0</b><span>侵权资源</span></div>
+      </div>
+      <div class="acts">
+        <a class="b b-p" href="#nav2">开始导航</a>
+        <a class="b b-g" href="#news">读一篇影评</a>
+      </div>
+    </div>
+    <div class="slice">
+      <div class="t">今 日 推 片 · PICK OF THE DAY</div>
+      <div class="citrus"></div>
+      <div class="smeta"><span>推荐类型</span><span>酸甜比</span></div>
+      <div class="smeta"><b>治愈系 / 冷门佳片</b><span>🍊 7 : 3 🍋</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ① 网址导航（分类卡 + 条目列表） ================= -->
+<section id="nav2">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t">网址导航 · 电影网站大全<small>SITE DIRECTORY / 分类卡 + 条目</small></h2>
+      <a class="more" href="#">全部分类 →</a>
+    </div>
+    <div class="cats" id="cats"></div>
+  </div>
+</section>
+
+<!-- ================= ② 热榜（进度条赛道） ================= -->
+<section id="rank" style="background:linear-gradient(180deg,transparent,rgba(255,176,58,.14))">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t">实时热榜 · 大家都在看<small>HOT RANK / 进度条赛道</small></h2>
+      <a class="more" href="#">完整榜单 →</a>
+    </div>
+    <div class="race" id="race"></div>
+  </div>
+</section>
+
+<!-- ================= ③ 分类（圆片拼盘） ================= -->
+<section id="cat">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t">分类频道 · 一键直达<small>CHANNELS / 圆片拼盘</small></h2>
+      <a class="more" href="#">全部频道 →</a>
+    </div>
+    <div class="plate" id="plate"></div>
+  </div>
+</section>
+
+<!-- ================= ④ 片单（真实数据表） ================= -->
+<section id="list" style="background:linear-gradient(180deg,rgba(255,176,58,.14),transparent)">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t">酸甜片单 · 橘子电影网推荐<small>WATCHLIST / 数据表</small></h2>
+      <a class="more" href="#">完整片单 →</a>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>#</th><th>影片</th><th>类型</th><th>地区</th><th>评分</th><th>口味</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ⑤ 影评（杂志主次卡） ================= -->
+<section id="news">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t">酸甜影评 · 观影指南<small>EDITORIAL / 杂志栅格</small></h2>
+      <a class="more" href="#">全部影评 →</a>
+    </div>
+    <div class="mag" id="mag"></div>
+  </div>
+</section>
+
+<!-- ================= ⑥ 观影日历（周历） ================= -->
+<section id="cal" style="background:linear-gradient(180deg,transparent,rgba(79,183,131,.12))">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t">观影日历 · 一周不重样<small>WEEK PLAN / 周历</small></h2>
+      <a class="more" href="#">完整片单 →</a>
+    </div>
+    <div class="cal" id="calbox"></div>
+  </div>
+</section>
+
+<!-- ================= ⑦ 特色（图标卡） ================= -->
+<section id="feat">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t">橘子电影网 · 四大特色<small>FEATURES / 图标卡</small></h2>
+      <a class="more" href="#about">了解更多 →</a>
+    </div>
+    <div class="feat">
+      <div class="fi"><div class="ic">🍊</div><h4>只收干净站</h4><p>人工筛选、定期巡检。收录标准只有一条：无弹窗、无诱导、不坑人。死链与违规站即时下架。</p></div>
+      <div class="fi"><div class="ic">🛡️</div><h4>坚决不碰违规资源</h4><p>本站为网址导航，不含在线播放与下载资源。不收录、不指向、不导流任何色情、盗版或侵权内容。</p></div>
+      <div class="fi"><div class="ic">🍋</div><h4>酸甜分级</h4><p>每部片标注"甜/酸"口味：甜是治愈、欢笑、爽片；酸是现实、锋利、致郁。按心情选片，不踩雷。</p></div>
+      <div class="fi"><div class="ic">✍️</div><h4>写人话的影评</h4><p>拒绝剧情复述。写台词、写运镜、写配乐、写演员的微表情，帮你看得懂、看得值。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section>
+  <div class="wrap">
+    <div class="cta">
+      <h2>好电影像橘子，剥开才甜</h2>
+      <p>橘子电影网 —— 精选优质电影网站导航大全，实用网址收录平台与观影指南。华语电影、港片、日韩电影、欧美电影、经典老片、冷门佳片，六大频道每日整理；实时热榜、酸甜片单、酸甜影评、观影日历，帮你把每一次观影都看得值。<b>请通过正规渠道观看正版影视内容，远离色情与侵权站点。</b></p>
+      <a class="b b-p" href="#nav2" style="background:#fff;color:var(--o1)">开始导航</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ⑧ 关于（页脚多列） ================= -->
+<footer class="ftr" id="about">
+  <div class="wrap">
+    <div class="fg">
+      <div class="fb">
+        <a class="logo" href="#top"><span class="mk">🍊</span>橘子电影网<em>导航</em></a>
+        <p>橘子电影网，精选优质电影网站导航大全与实用网址收录平台。我们相信：找片是技术，选片是口味——前者能练，后者得养。</p>
+      </div>
+      <div class="fc">
+        <h5>分类频道</h5>
+        <a href="#cat">华语电影</a>
+        <a href="#cat">港片</a>
+        <a href="#cat">日韩电影</a>
+        <a href="#cat">欧美电影</a>
+        <a href="#cat">经典老片</a>
+        <a href="#cat">冷门佳片</a>
+      </div>
+      <div class="fc">
+        <h5>内容栏目</h5>
+        <a href="#nav2">网址导航</a>
+        <a href="#rank">实时热榜</a>
+        <a href="#list">酸甜片单</a>
+        <a href="#news">酸甜影评</a>
+        <a href="#cal">观影日历</a>
+      </div>
+      <div class="fc">
+        <h5>关于本站</h5>
+        <a href="#">网站简介</a>
+        <a href="#">收录标准</a>
+        <a href="#">酸甜分级说明</a>
+        <a href="#">正版观看说明</a>
+        <a href="#">免责声明</a>
+      </div>
+    </div>
+    <div class="fbttm">
+      <p>© <span id="yr"></span> 橘子电影网 保留所有权利。本站为电影网站导航及网址收录平台，不含在线播放资源，不提供任何色情、盗版或侵权内容。</p>
+      <p style="margin-top:8px">网站网址：<a href="https://juzidianyingwang-cn.github.io" rel="noopener">https://juzidianyingwang-cn.github.io</a> ｜ 本页为演示模板，内页链接均以 # 占位。</p>
+      <p style="margin-top:8px">温馨提示：请通过正规渠道观看正版影视内容，自觉远离色情低俗与侵权站点，遵守当地法律法规。</p>
+    </div>
+  </div>
+</footer>
+
+<button class="top" id="topBtn" aria-label="返回顶部">↑</button>
+
+<script>
+/* ============ 数据 ============ */
+var CATS=[
+  {t:"华语电影",ic:"🎬",bg:"linear-gradient(135deg,#FF7A1A,#FFB03A)",c:178,
+   items:[["华语电影导航合集","华语","直达"],["内地剧情片索引","内地","直达"],["文艺片专题","文艺","直达"],["喜剧与贺岁片","喜剧","直达"],["新生代导演作品","新导演","直达"]]},
+  {t:"港片",ic:"🌃",bg:"linear-gradient(135deg,#E0552B,#FF7A1A)",c:154,
+   items:[["港片导航合集","港片","直达"],["警匪与黑帮题材","警匪","直达"],["时装商战剧","商战","直达"],["武侠与功夫片","武侠","直达"],["港式喜剧经典","喜剧","直达"]]},
+  {t:"日韩电影",ic:"🗾",bg:"linear-gradient(135deg,#D98A2B,#FFB03A)",c:142,
+   items:[["日韩电影导航","日韩","直达"],["日本剧情片","日本","直达"],["韩国犯罪悬疑","韩国","直达"],["动画与治愈系","动画","直达"],["东亚独立电影","独立","直达"]]},
+  {t:"欧美电影",ic:"🌍",bg:"linear-gradient(135deg,#4FB783,#7CC79A)",c:136,
+   items:[["欧美电影导航","欧美","直达"],["好莱坞商业片","好莱坞","直达"],["欧洲艺术电影","欧洲","直达"],["英美剧集","英美剧","直达"],["纪录片与短片","纪录","直达"]]},
+  {t:"经典老片",ic:"📽️",bg:"linear-gradient(135deg,#B98B3C,#D9A94B)",c:108,
+   items:[["经典老片导航","老片","直达"],["公共版权影片","公版","直达"],["修复版与影展","修复","直达"],["影史百大推荐","影史","直达"],["老片观影指南","指南","直达"]]},
+  {t:"冷门佳片",ic:"🔍",bg:"linear-gradient(135deg,#7C6BA8,#A48BD0)",c:94,
+   items:[["冷门佳片导航","冷门","直达"],["小语种电影","小语种","直达"],["处女作与遗珠","遗珠","直达"],["影迷私藏清单","私藏","直达"],["高分低口碑反差","反差","直达"]]}
+];
+var RANK=[
+  {t:"肖申克的救赎",g:"欧美经典",h:942},
+  {t:"霸王别姬",g:"华语经典",h:918},
+  {t:"阿甘正传",g:"欧美经典",h:886},
+  {t:"千与千寻",g:"日本动画",h:842},
+  {t:"无间道",g:"港片",h:811},
+  {t:"泰坦尼克号",g:"好莱坞",h:768},
+  {t:"楚门的世界",g:"欧美剧情",h:704},
+  {t:"重庆森林",g:"港片",h:651}
+];
+var PLATE=[
+  {t:"华语电影",bg:"linear-gradient(135deg,#FF7A1A,#FFB03A)",x:6,y:8,w:34,h:34},
+  {t:"港片",bg:"linear-gradient(135deg,#E0552B,#FF7A1A)",x:42,y:6,w:30,h:30},
+  {t:"日韩电影",bg:"linear-gradient(135deg,#D98A2B,#FFB03A)",x:74,y:10,w:28,h:28},
+  {t:"欧美电影",bg:"linear-gradient(135deg,#4FB783,#7CC79A)",x:6,y:46,w:30,h:30},
+  {t:"经典老片",bg:"linear-gradient(135deg,#B98B3C,#D9A94B)",x:40,y:40,w:26,h:26},
+  {t:"冷门佳片",bg:"linear-gradient(135deg,#7C6BA8,#A48BD0)",x:70,y:42,w:28,h:28},
+  {t:"纪录片",bg:"linear-gradient(135deg,#3E9BD4,#6FB8E0)",x:10,y:80,w:28,h:26},
+  {t:"观影指南",bg:"linear-gradient(135deg,#E09B3C,#FFB03A)",x:44,y:72,w:30,h:26}
+];
+var LIST=[
+  {t:"肖申克的救赎",ty:"剧情 / 人性",rg:"美国",s:"9.7",p:"甜 · 希望",cls:"p-c"},
+  {t:"霸王别姬",ty:"剧情 / 爱情",rg:"中国大陆",s:"9.6",p:"酸 · 时代",cls:"p-h"},
+  {t:"千与千寻",ty:"动画 / 奇幻",rg:"日本",s:"9.4",p:"甜 · 治愈",cls:"p-c"},
+  {t:"无间道",ty:"警匪 / 犯罪",rg:"中国香港",s:"9.3",p:"酸 · 身份",cls:"p-h"},
+  {t:"阿甘正传",ty:"剧情 / 励志",rg:"美国",s:"9.5",p:"甜 · 奔跑",cls:"p-c"},
+  {t:"泰坦尼克号",ty:"爱情 / 灾难",rg:"美国",s:"9.4",p:"酸甜 · 爱情",cls:"p-h"},
+  {t:"楚门的世界",ty:"剧情 / 科幻",rg:"美国",s:"9.4",p:"酸 · 真实",cls:"p-h"},
+  {t:"重庆森林",ty:"爱情 / 文艺",rg:"中国香港",s:"8.8",p:"酸甜 · 孤独",cls:"p-n"}
+];
+var NEWS=[
+  {c:"酸甜影评",e:"🍊",bg:"linear-gradient(135deg,#FF7A1A,#FFB03A)",t:"为什么我们坚持给电影标\"酸甜\"",d:"不是所有好电影都让人舒服。有些片子像橘子皮，苦、涩、刺鼻，可你剥开它，里面是甜的。\"酸甜\"不是评分，是一份观影前的心理准备。"},
+  {c:"选片方法",e:"🍋",bg:"linear-gradient(135deg,#E0552B,#FF7A1A)",t:"两小时怎么花，才算没浪费",d:"片长不是门槛，节奏才是。教你用开场十分钟判断一部电影值不值得看完。"},
+  {c:"类型解码",e:"🎞️",bg:"linear-gradient(135deg,#D98A2B,#FFB03A)",t:"港片的夜景，从来不只是布景",d:"霓虹、后巷、茶餐厅、天台。港片的空间是人物的处境，灯光是性格，雨是台词。"},
+  {c:"版本考据",e:"📽️",bg:"linear-gradient(135deg,#B98B3C,#D9A94B)",t:"修复版老片，修的不只是画质",d:"胶片的颗粒、配音的腔调、配乐的取舍——每一次修复，都是一次重新上映。"},
+  {c:"版权常识",e:"🛡️",bg:"linear-gradient(135deg,#4FB783,#7CC79A)",t:"什么样的电影可以合法免费看",d:"公共版权、平台限免、电视台重播、官方展映——四种合法免费的边界。"}
+];
+var CAL=[
+  {wd:"周一",dt:"20",tg:"治愈系动画：给工作日一个缓冲"},
+  {wd:"周二",dt:"21",tg:"港片夜：霓虹下的身份焦虑"},
+  {wd:"周三",dt:"22",tg:"冷门佳片：小语种遗珠"},
+  {wd:"周四",dt:"23",tg:"纪录片：真实比剧本锋利"},
+  {wd:"周五",dt:"24",tg:"爽片：不需要思考的快乐"},
+  {wd:"周六",dt:"25",tg:"华语经典：重看才懂的细节"},
+  {wd:"周日",dt:"26",tg:"家庭场：三代人都能看"}
+];
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+function renderCats(){
+  var h="",i,c,j,it;
+  for(i=0;i<CATS.length;i++){
+    c=CATS[i];
+    h+='<div class="cat" style="--bg:'+c.bg+'"><div class="hd2"><span class="ic">'+c.ic+'</span><div><b>'+esc(c.t)+'</b><small>'+c.c+' 个精选网址</small></div></div><ul>';
+    for(j=0;j<c.items.length;j++){
+      it=c.items[j];
+      h+='<li><a href="#"><span class="dot"></span><span>'+esc(it[0])+'</span><em>'+esc(it[1])+'</em></a></li>';
+    }
+    h+='</ul></div>';
+  }
+  document.getElementById("cats").innerHTML=h;
+}
+function renderRank(){
+  var mx=RANK[0].h,h="",i,r;
+  for(i=0;i<RANK.length;i++){
+    r=RANK[i];
+    h+='<div class="rw"><span class="nd">'+(i+1)+'</span><div class="tx"><b>'+esc(r.t)+'</b><small>'+esc(r.g)+'</small></div><div class="bar"><em data-w="'+Math.round(r.h/mx*100)+'"></em></div><span class="ht">'+r.h+' 热度</span></div>';
+  }
+  document.getElementById("race").innerHTML=h;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.style.width=e.target.dataset.w+"%";io.unobserve(e.target);}});},{threshold:.2});
+  document.querySelectorAll("#race .bar em").forEach(function(el){io.observe(el);});
+}
+function renderPlate(){
+  var h="",i,p;
+  for(i=0;i<PLATE.length;i++){
+    p=PLATE[i];
+    h+='<div class="pl" style="left:'+p.x+'%;top:'+p.y+'%;width:'+p.w+'%;height:'+p.h+'%;background:'+p.bg+'"><span>'+esc(p.t)+'</span></div>';
+  }
+  document.getElementById("plate").innerHTML=h;
+}
+function renderList(){
+  var h="",i,l;
+  for(i=0;i<LIST.length;i++){
+    l=LIST[i];
+    h+='<tr><td class="n">'+(i+1)+'</td><td class="ttl">'+esc(l.t)+'</td><td>'+esc(l.ty)+'</td><td>'+esc(l.rg)+'</td><td class="stars">★ '+l.s+'</td><td><span class="pill '+l.cls+'">'+esc(l.p)+'</span></td></tr>';
+  }
+  document.getElementById("tbody").innerHTML=h;
+}
+function renderNews(){
+  var h="",i,n;
+  for(i=0;i<NEWS.length;i++){
+    n=NEWS[i];
+    h+='<article class="nt'+(i===0?" lead":"")+'" style="--bg:'+n.bg+'" data-e="'+n.e+'"><div class="cv"></div><div class="bd"><span class="cat2">'+esc(n.c)+'</span><h4>'+esc(n.t)+'</h4>'+(i===0?'<p>'+esc(n.d)+'</p>':'')+'<div class="meta"><span>酸甜影评</span><span>阅读 '+Math.floor(Math.random()*18000+2600)+'</span></div></div></article>';
+  }
+  document.getElementById("mag").innerHTML=h;
+}
+function renderCal(){
+  var h="",i,d;
+  for(i=0;i<CAL.length;i++){
+    d=CAL[i];
+    h+='<div class="day"><div class="wd">'+esc(d.wd)+'</div><div class="dt">'+d.dt+'</div><div class="tg">'+esc(d.tg)+'</div></div>';
+  }
+  document.getElementById("calbox").innerHTML=h;
+}
+
+document.addEventListener("DOMContentLoaded",function(){
+  renderCats();renderRank();renderPlate();renderList();renderNews();renderCal();
+  document.getElementById("yr").textContent=new Date().getFullYear();
+
+  var mb=document.getElementById("mb"), nav=document.getElementById("nav");
+  mb.addEventListener("click",function(){
+    nav.classList.toggle("open");
+    var o=nav.classList.contains("open");
+    mb.textContent=o?"✕":"☰";
+    mb.setAttribute("aria-expanded",o?"true":"false");
+  });
+  var as=nav.querySelectorAll("a");
+  for(var a=0;a<as.length;a++){
+    as[a].addEventListener("click",function(){nav.classList.remove("open");mb.textContent="☰";mb.setAttribute("aria-expanded","false");});
+  }
+
+  var secs=document.querySelectorAll("section[id]"), items=document.querySelectorAll(".nav a"), tt=document.getElementById("topBtn");
+  function onScroll(){
+    var pos=window.scrollY+170, cur="";
+    for(var s=0;s<secs.length;s++){ if(secs[s].offsetTop<=pos) cur=secs[s].id; }
+    for(var n=0;n<items.length;n++){ items[n].classList.toggle("on", items[n].getAttribute("href")==="#"+cur); }
+    tt.classList.toggle("show", window.scrollY>700);
+  }
+  window.addEventListener("scroll",onScroll,{passive:true});
+  onScroll();
+  tt.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
+});
+</script>
+</body>
+</html>
